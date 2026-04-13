@@ -1,0 +1,70 @@
+body {
+  background-color: rgb(6, 6, 31);
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: center;
+}
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-block: 20px;
+}
+header h1 {
+  font-size: 2.2rem;
+}
+
+header p {
+  max-width: 400px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.assembly-game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.game-template {
+  width: 500px;
+  height: 600px;
+  background-color: black;
+  border: 5px solid white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.win-section {
+  box-sizing: border-box;
+  width: 70%;
+  margin-block: 30px;
+  height: fit-content;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+}
+.language-section {
+  box-sizing: border-box;
+  width: 80%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 350px;
+}
