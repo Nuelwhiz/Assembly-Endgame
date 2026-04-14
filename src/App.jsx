@@ -52,6 +52,7 @@ function App() {
           <section className="alphabet-btn-container">
             {alphabetDisplay}
           </section>
+          <button className="new-game">New Game</button>
         </div>
       </main>
     </>

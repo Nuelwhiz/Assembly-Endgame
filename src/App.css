@@ -90,12 +90,23 @@ header p {
 .alphabet-btn-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 350px;
+  max-width: 400px;
   justify-content: center;
-  gap: 3px;
+  gap: 8px;
   margin-top: 30px;
 }
 .alphabet-btn {
   height: 30px;
   width: 30px;
+  background-color: #fcba29;
+  border: 1px solid #d7d7d7;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.new-game {
+  margin-top: 30px;
+  padding: 8px 40px;
+  background-color: rgb(79, 170, 245);
+  border: none;
+  border-radius: 3px;
 }
