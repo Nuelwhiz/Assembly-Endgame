@@ -4,6 +4,9 @@ import { Languages } from "./languages/language";
 import "./App.css";
 
 function App() {
+  const [currentWord, setCurrentWord] = useState("reacty");
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  //displaying languages
   const languageElements = Languages.map((lang) => {
     const styles = { backgroundColor: lang.backgroundColor, color: lang.color };
     return (
@@ -13,6 +16,20 @@ function App() {
       </span>
     );
   });
+  //current tecxt
+
+  const wordCurrentShow = currentWord.split("").map((word, index) => (
+    <span className="word" key={index}>
+      {word.toLocaleUpperCase()}
+    </span>
+  ));
+
+  //button click
+  const alphabetDisplay = alphabet.split("").map((alpha, index) => (
+    <button className="alphabet-btn" key={index}>
+      {alpha.toUpperCase()}
+    </button>
+  ));
   return (
     <>
       <main className="assembly-game-container">
@@ -31,6 +48,10 @@ function App() {
           </section>
 
           <section className="language-section">{languageElements}</section>
+          <section className="word-show">{wordCurrentShow}</section>
+          <section className="alphabet-btn-container">
+            {alphabetDisplay}
+          </section>
         </div>
       </main>
     </>
