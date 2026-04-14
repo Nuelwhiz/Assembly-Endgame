@@ -68,3 +68,7 @@ header p {
   gap: 10px;
   max-width: 350px;
 }
+.chip {
+  padding: 2px 4px;
+  border-radius: 5px;
+}

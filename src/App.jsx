@@ -4,6 +4,15 @@ import { Languages } from "./languages/language";
 import "./App.css";
 
 function App() {
+  const languageElements = Languages.map((lang) => {
+    const styles = { backgroundColor: lang.backgroundColor, color: lang.color };
+    return (
+      <span key={lang.id} className="chip" style={styles}>
+        {" "}
+        {lang.name}{" "}
+      </span>
+    );
+  });
   return (
     <>
       <main className="assembly-game-container">
@@ -21,7 +30,7 @@ function App() {
             <p>well done</p>
           </section>
 
-          <section className="language-section"></section>
+          <section className="language-section">{languageElements}</section>
         </div>
       </main>
     </>
