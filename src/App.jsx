@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Languages } from "./languages/language";
+import { clsx } from "clsx";
 
 import "./App.css";
 
 function App() {
   const [currentWord, setCurrentWord] = useState("reacty");
+  const [guessedWord, setGuessedWord] = useState([]);
+
+  function addGuessedWord(letter) {
+    setGuessedWord((prevLetter) =>
+      prevLetter.includes(letter) ? prevLetter : [...prevLetter, letter],
+    );
+  }
+
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   //displaying languages
   const languageElements = Languages.map((lang) => {
@@ -25,11 +34,26 @@ function App() {
   ));
 
   //button click
-  const alphabetDisplay = alphabet.split("").map((alpha, index) => (
-    <button className="alphabet-btn" key={index}>
-      {alpha.toUpperCase()}
-    </button>
-  ));
+  const alphabetDisplay = alphabet.split("").map((letter) => {
+    const isGuessed = guessedWord.includes(letter);
+    const isCorrect = isGuessed && currentWord.includes(letter);
+    const isWrong = isGuessed && !currentWord.includes(letter);
+    const className = clsx({
+      correct: isCorrect,
+      wrong: isWrong,
+    });
+
+    return (
+      <button
+        onClick={() => addGuessedWord(letter)}
+        className={className}
+        id="alphabet-btn"
+        key={letter}
+      >
+        {letter.toUpperCase()}
+      </button>
+    );
+  });
   return (
     <>
       <main className="assembly-game-container">
