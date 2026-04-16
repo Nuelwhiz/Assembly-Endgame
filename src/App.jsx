@@ -27,9 +27,9 @@ function App() {
   });
   //current tecxt
 
-  const wordCurrentShow = currentWord.split("").map((word, index) => (
+  const wordCurrentShow = currentWord.split("").map((letter, index) => (
     <span className="word" key={index}>
-      {word.toLocaleUpperCase()}
+      {guessedWord.includes(letter) ? letter.toLocaleUpperCase() : ""}
     </span>
   ));
 
