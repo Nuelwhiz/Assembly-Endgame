@@ -14,12 +14,24 @@ function App() {
     );
   }
 
+  const guessedWrong = guessedWord.filter(
+    (letter) => !currentWord.includes(letter),
+  );
+
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   //displaying languages
-  const languageElements = Languages.map((lang) => {
-    const styles = { backgroundColor: lang.backgroundColor, color: lang.color };
+  const languageElements = Languages.map((lang, index) => {
+    const lostLang = index < guessedWrong.length;
+
+    const styles = {
+      backgroundColor: lang.backgroundColor,
+      color: lang.color,
+    };
+
+    const losts = clsx("chip", lostLang && "lost");
+
     return (
-      <span key={lang.id} className="chip" style={styles}>
+      <span key={lang.id} className={losts} style={styles}>
         {" "}
         {lang.name}{" "}
       </span>

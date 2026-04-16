@@ -68,9 +68,27 @@ header p {
   gap: 10px;
   max-width: 350px;
 }
-.chip {
-  padding: 2px 4px;
+span.chip {
+  padding: 3px 4px;
   border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 0;
+}
+span.chip.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.7);
+  z-index: 1;
 }
 .word-show {
   display: flex;
