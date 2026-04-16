@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 import "./App.css";
 
 function App() {
-  const [currentWord, setCurrentWord] = useState("reacty");
+  const [currentWord, setCurrentWord] = useState("react");
   const [guessedWord, setGuessedWord] = useState([]);
 
   function addGuessedWord(letter) {
@@ -17,6 +17,15 @@ function App() {
   const guessedWrong = guessedWord.filter(
     (letter) => !currentWord.includes(letter),
   );
+  //game won
+  const gameWon = currentWord
+    .split("")
+    .every((letter) => guessedWord.includes(letter));
+
+  //gamelost
+  const gameLost = guessedWrong.length >= Languages.length;
+  //game over
+  const gameOver = gameWon || gameLost;
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   //displaying languages
@@ -32,8 +41,7 @@ function App() {
 
     return (
       <span key={lang.id} className={losts} style={styles}>
-        {" "}
-        {lang.name}{" "}
+        {lang.name}
       </span>
     );
   });
@@ -88,7 +96,7 @@ function App() {
           <section className="alphabet-btn-container">
             {alphabetDisplay}
           </section>
-          <button className="new-game">New Game</button>
+          {gameOver && <button className="new-game">New Game</button>}
         </div>
       </main>
     </>
