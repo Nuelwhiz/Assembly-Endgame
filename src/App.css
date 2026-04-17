@@ -58,6 +58,9 @@ header p {
   gap: 10px;
   border-radius: 5px;
 }
+.lose {
+  background-color: red;
+}
 .language-section {
   box-sizing: border-box;
   width: 80%;

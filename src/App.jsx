@@ -5,6 +5,9 @@ import { clsx } from "clsx";
 import "./App.css";
 
 function App() {
+  const allli = Languages.map((checked) => checked.name);
+  console.log(allli);
+
   const [currentWord, setCurrentWord] = useState("react");
   const [guessedWord, setGuessedWord] = useState([]);
 
@@ -74,6 +77,11 @@ function App() {
       </button>
     );
   });
+
+  const winFailCondition = clsx("win-section", {
+    won: gameWon,
+    lose: gameLost,
+  });
   return (
     <>
       <main className="assembly-game-container">
@@ -86,9 +94,20 @@ function App() {
             </p>
           </header>
 
-          <section className="win-section">
-            <h2>you win!!</h2>
-            <p>well done</p>
+          <section className={winFailCondition}>
+            {gameOver ? (
+              gameWon ? (
+                <>
+                  <h2>you win!!</h2>
+                  <p>well done</p>
+                </>
+              ) : (
+                <>
+                  <h2>game over!!</h2>
+                  <p>you lose! better start learning assembly</p>
+                </>
+              )
+            ) : null}
           </section>
 
           <section className="language-section">{languageElements}</section>
