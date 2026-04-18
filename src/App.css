@@ -61,6 +61,15 @@ header p {
 .lose {
   background-color: red;
 }
+.farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
+  padding-block: 20px;
+}
+.farewell-msg {
+  font-style: italic;
+  font-weight: 400;
+}
 .language-section {
   box-sizing: border-box;
   width: 80%;

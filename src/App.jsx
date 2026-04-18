@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Languages } from "./languages/language";
 import { clsx } from "clsx";
+import { getFarewellText } from "./languages/farewell";
 
 import "./App.css";
 
 function App() {
-  const allli = Languages.map((checked) => checked.name);
-  console.log(allli);
+  //const allli = Languages.map((checked) => checked.name);
+  //console.log(allli);
 
   const [currentWord, setCurrentWord] = useState("react");
   const [guessedWord, setGuessedWord] = useState([]);
@@ -29,6 +30,13 @@ function App() {
   const gameLost = guessedWrong.length >= Languages.length;
   //game over
   const gameOver = gameWon || gameLost;
+
+  //farewell logic
+  const lastGuessLetters = guessedWord[guessedWord.length - 1];
+  const lastGuessedIncorrect =
+    lastGuessLetters && !currentWord.includes(lastGuessLetters);
+
+  //farewell /ogic close
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   //displaying languages
@@ -78,9 +86,36 @@ function App() {
     );
   });
 
+  function winCondition() {
+    if (!gameOver && lastGuessedIncorrect) {
+      return (
+        <p className="farewell-msg">
+          {getFarewellText(Languages[guessedWrong.length - 1].name)}
+        </p>
+      );
+    }
+    if (gameWon) {
+      return (
+        <>
+          <h2>you win!!</h2>
+          <p>well done</p>
+        </>
+      );
+    }
+    if (gameLost) {
+      return (
+        <>
+          <h2>game over!!</h2>
+          <p>you lose! better start learning assembly</p>
+        </>
+      );
+    }
+    return null;
+  }
   const winFailCondition = clsx("win-section", {
     won: gameWon,
     lose: gameLost,
+    farewell: !gameOver && lastGuessedIncorrect,
   });
   return (
     <>
@@ -94,21 +129,7 @@ function App() {
             </p>
           </header>
 
-          <section className={winFailCondition}>
-            {gameOver ? (
-              gameWon ? (
-                <>
-                  <h2>you win!!</h2>
-                  <p>well done</p>
-                </>
-              ) : (
-                <>
-                  <h2>game over!!</h2>
-                  <p>you lose! better start learning assembly</p>
-                </>
-              )
-            ) : null}
-          </section>
+          <section className={winFailCondition}>{winCondition()}</section>
 
           <section className="language-section">{languageElements}</section>
           <section className="word-show">{wordCurrentShow}</section>
